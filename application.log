@@ -1,0 +1,14 @@
+2022-06-08 19:35:30.236  INFO 8176 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : Starting AddressbookAppBackendApplication using Java 1.8.0_181 on LAPTOP-PUULM6OO with PID 8176 (C:\Users\Mangesh\IdeaProjects\addressbook-app-backend\target\classes started by Mangesh in C:\Users\Mangesh\IdeaProjects\addressbook-app-backend)
+2022-06-08 19:35:30.237 DEBUG 8176 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : Running with Spring Boot v2.7.0, Spring v5.3.20
+2022-06-08 19:35:30.238  INFO 8176 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : The following 1 profile is active: "dev"
+2022-06-08 19:35:32.485  WARN 8176 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-08 19:35:32.762  WARN 8176 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-06-08 19:35:32.804  INFO 8176 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : Started AddressbookAppBackendApplication in 2.952 seconds (JVM running for 3.982)
+2022-06-08 19:37:39.297  INFO 20888 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : Starting AddressbookAppBackendApplication using Java 1.8.0_181 on LAPTOP-PUULM6OO with PID 20888 (C:\Users\Mangesh\IdeaProjects\addressbook-app-backend\target\classes started by Mangesh in C:\Users\Mangesh\IdeaProjects\addressbook-app-backend)
+2022-06-08 19:37:39.298 DEBUG 20888 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : Running with Spring Boot v2.7.0, Spring v5.3.20
+2022-06-08 19:37:39.299  INFO 20888 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : The following 1 profile is active: "dev"
+2022-06-08 19:37:41.780  WARN 20888 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-08 19:37:42.001  WARN 20888 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-06-08 19:37:42.235  INFO 20888 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : Started AddressbookAppBackendApplication in 3.293 seconds (JVM running for 4.168)
+2022-06-08 19:37:42.241  INFO 20888 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   :  Address Book App Started
+2022-06-08 19:37:42.242  INFO 20888 --- [restartedMain] c.b.a.AddressbookAppBackendApplication   : Address Book DB User is root 
