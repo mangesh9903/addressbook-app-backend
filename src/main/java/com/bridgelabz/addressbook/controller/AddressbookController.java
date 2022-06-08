@@ -1,8 +1,17 @@
 package com.bridgelabz.addressbook.controller;
 
+import com.bridgelabz.addressbook.dto.AddressbookDTO;
+import com.bridgelabz.addressbook.dto.ResponseDTO;
+import com.bridgelabz.addressbook.model.AddressbookData;
+import com.bridgelabz.addressbook.service.AddressbookServiceI;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
 /*********************************************************************
  * Purpose: Class for Rest Controller.
  *
@@ -15,28 +24,76 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class AddressbookController {
 
+    @Autowired
+    private AddressbookServiceI addressbookService;
+
+    /**
+     * Method :- Method for Getting All The Address Book Records.
+     *
+     * @return :- Returning Records.
+     */
     @GetMapping("/getAddressbookInfo")
-    public ResponseEntity<String> getAddressbookInfo(){
-        return new ResponseEntity<String>("Get Call Success", HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> getAddressbookInfo() {
+        List<AddressbookData> addressbookList = null;
+        addressbookList = addressbookService.getAddressbookData();
+        ResponseDTO responseDTO = new ResponseDTO("Get Call Success", addressbookList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    /**
+     * Method :- Method to Get the Address Book Records by Id.
+     *
+     * @param id :- Passing id as input
+     * @return :- Returning Records.
+     */
     @GetMapping("/getAddressbookInfo/{id}")
-    public ResponseEntity<String> getAddressbookInfoById(@PathVariable int id){
-        return new ResponseEntity<String>("Get Call Success for Id : "+ id, HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> getAddressbookInfoById(@PathVariable int id) {
+        AddressbookData addressbookData = null;
+        addressbookData = addressbookService.getAddressbookDataById(id);
+        ResponseDTO responseDTO = new ResponseDTO("Get Call For ID Successful : ", addressbookData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    /**
+     * Method :- Method to Add the Address Book Record.
+     *
+     * @param addressbookDTO :- Passing addressbookDTO as input
+     * @return :- Returning Response
+     */
     @PostMapping("/createAddressbook")
-    public ResponseEntity<String> addAddressbookInfo(@RequestBody  String addressbook ){
-        return new ResponseEntity<String>("Create Addressbook for : "+ addressbook, HttpStatus.CREATED);
+    public ResponseEntity<ResponseDTO> addAddressbookInfo(@Valid @RequestBody AddressbookDTO addressbookDTO) {
+        AddressbookData addressbookData = null;
+        addressbookData = addressbookService.addAddressbookData(addressbookDTO);
+        ResponseDTO responseDTO = new ResponseDTO("Created  Addressbook Data Successfully", addressbookData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.CREATED);
+
     }
 
+    /**
+     * Method :- Method to Update the Address Book Record.
+     *
+     * @param id :- Passing id as input
+     * @return :- Returning Response
+     */
     @PutMapping("/updateAddressbook")
-    public ResponseEntity<String> updateAddressbookInfo(@RequestBody  String addressbook ){
-        return new ResponseEntity<String>("Updated Addressbook for : "+ addressbook, HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> updateAddressbookInfo(@PathVariable int id) {
+        AddressbookData addressbookData = null;
+        addressbookData = addressbookService.updateAddressbookData(id);
+        ResponseDTO responseDTO = new ResponseDTO("Updated Addressbook Data Successfully.", addressbookData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    /**
+     * Method :- Method to Delete the Address Book Record.
+     *
+     * @param id :- Passing id as input.
+     * @return :- Returning Response
+     */
     @DeleteMapping("/deleteAddressbookAddressbook/{id}")
-    public ResponseEntity<String> deleteAddressbookInfo(@PathVariable  int id ){
-        return new ResponseEntity<String>("Delete call Success for Id : "+ id, HttpStatus.OK);
+    public ResponseEntity<ResponseDTO> deleteAddressbookInfo(@PathVariable int id) {
+        AddressbookData addressbookData = null;
+        addressbookData = addressbookService.deleteAddressbookData(id);
+        ResponseDTO responseDTO = new ResponseDTO("Deleted Addressbook Data Successfully.", addressbookData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 }
