@@ -3,7 +3,14 @@ package com.bridgelabz.addressbook.model;
 import com.bridgelabz.addressbook.dto.AddressbookDTO;
 import lombok.Data;
 import lombok.ToString;
-
+/*********************************************************************
+ * Purpose: Class for Address Book Data.
+ *
+ * @author Mangesh Bhujang
+ * @version 1.0
+ * @since 08-06-2022
+ *
+ **********************************************************************/
 @Data
 @ToString
 public class AddressbookData {

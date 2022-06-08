@@ -12,7 +12,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+/*********************************************************************
+ * Purpose: Class for Global Exception Handling.
+ *
+ * @author Mangesh Bhujang
+ * @version 1.0
+ * @since 08-06-2022
+ *
+ **********************************************************************/
 @Slf4j
 @ControllerAdvice
 public class AddressbookExceptionalHandler {

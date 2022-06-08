@@ -6,7 +6,14 @@ import lombok.ToString;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
+/*********************************************************************
+ * Purpose: Class for Address Book DTO.
+ *
+ * @author Mangesh Bhujang
+ * @version 1.0
+ * @since 08-06-2022
+ *
+ **********************************************************************/
 @ToString
 @Data
 public class AddressbookDTO {

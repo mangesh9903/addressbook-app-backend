@@ -3,7 +3,14 @@ package com.bridgelabz.addressbook.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+/*********************************************************************
+ * Purpose: Class for Rest Controller.
+ *
+ * @author Mangesh Bhujang
+ * @version 1.0
+ * @since 08-06-2022
+ *
+ **********************************************************************/
 @RequestMapping("/addressbook")
 @RestController
 public class AddressbookController {
