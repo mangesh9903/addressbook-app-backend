@@ -20,7 +20,7 @@ public interface AddressbookServiceI {
 
     AddressbookData addAddressbookData(AddressbookDTO addressbookDTO);
 
-    AddressbookData updateAddressbookData(int id);
+    AddressbookData updateAddressbookData(int id, AddressbookDTO addressbookDTO);
 
-    AddressbookData deleteAddressbookData(int id);
+    void deleteAddressbookData(int id);
 }

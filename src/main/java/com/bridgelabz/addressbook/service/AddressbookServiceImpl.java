@@ -1,7 +1,11 @@
 package com.bridgelabz.addressbook.service;
 
 import com.bridgelabz.addressbook.dto.AddressbookDTO;
+import com.bridgelabz.addressbook.exception.AddressbookException;
 import com.bridgelabz.addressbook.model.AddressbookData;
+import com.bridgelabz.addressbook.repository.AddressbookRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +17,12 @@ import java.util.List;
  * @since 08-06-2022
  *
  **********************************************************************/
+@Slf4j
 @Service
 public class AddressbookServiceImpl implements AddressbookServiceI {
 
+    @Autowired
+    private AddressbookRepository addressbookRepository;
 
     /**
      * Method :- Method for Getting All The Address Book Records.
@@ -24,7 +31,7 @@ public class AddressbookServiceImpl implements AddressbookServiceI {
      */
     @Override
     public List<AddressbookData> getAddressbookData() {
-        return null;
+        return addressbookRepository.findAll();
     }
 
     /**
@@ -35,7 +42,7 @@ public class AddressbookServiceImpl implements AddressbookServiceI {
      */
     @Override
     public AddressbookData getAddressbookDataById(int id) {
-        return null;
+        return addressbookRepository.findById(id).orElseThrow(() -> new AddressbookException("Addressbook Data with  Id " + id + " Does Not Exists In Database."));
     }
 
     /**
@@ -46,18 +53,31 @@ public class AddressbookServiceImpl implements AddressbookServiceI {
      */
     @Override
     public AddressbookData addAddressbookData(AddressbookDTO addressbookDTO) {
-        return null;
+        AddressbookData addressbookData = null;
+        addressbookData = new AddressbookData(addressbookDTO);
+        log.debug("Addressbook Data : "+addressbookData);
+        addressbookRepository.save(addressbookData);
+        return addressbookData;
     }
 
     /**
      * Method :- Method to Update the Address Book Record.
      *
-     * @param id :- Passing id as input
+     * @param id             :- Passing id as input
+     * @param addressbookDTO
      * @return :- Returning addressbookData
      */
     @Override
-    public AddressbookData updateAddressbookData(int id) {
-        return null;
+    public AddressbookData updateAddressbookData(int id, AddressbookDTO addressbookDTO) {
+       AddressbookData addressbookData = this.getAddressbookDataById(id);
+       addressbookData.setFirstName(addressbookDTO.firstName);
+       addressbookData.setLastName(addressbookDTO.lastName);
+       addressbookData.setState(addressbookDTO.state);
+       addressbookData.setCity(addressbookDTO.city);
+       addressbookData.setZipCode(addressbookDTO.zipCode);
+       addressbookData.setPhoneNumber(addressbookDTO.phoneNumber);
+       addressbookRepository.save(addressbookData);
+       return addressbookData;
     }
 
     /**
@@ -67,7 +87,8 @@ public class AddressbookServiceImpl implements AddressbookServiceI {
      * @return :- Returning addressbookData
      */
     @Override
-    public AddressbookData deleteAddressbookData(int id) {
-        return null;
+    public void deleteAddressbookData(int id) {
+        AddressbookData addressbookData = this.getAddressbookDataById(id);
+        addressbookRepository.delete(addressbookData);
     }
 }

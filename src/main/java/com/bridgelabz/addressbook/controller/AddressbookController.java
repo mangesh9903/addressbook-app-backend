@@ -75,10 +75,10 @@ public class AddressbookController {
      * @param id :- Passing id as input
      * @return :- Returning Response
      */
-    @PutMapping("/updateAddressbook")
-    public ResponseEntity<ResponseDTO> updateAddressbookInfo(@PathVariable int id) {
+    @PutMapping("/updateAddressbook/{id}")
+    public ResponseEntity<ResponseDTO> updateAddressbookInfo(@PathVariable int id, @Valid @RequestBody AddressbookDTO addressbookDTO) {
         AddressbookData addressbookData = null;
-        addressbookData = addressbookService.updateAddressbookData(id);
+        addressbookData = addressbookService.updateAddressbookData(id, addressbookDTO);
         ResponseDTO responseDTO = new ResponseDTO("Updated Addressbook Data Successfully.", addressbookData);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
@@ -89,11 +89,10 @@ public class AddressbookController {
      * @param id :- Passing id as input.
      * @return :- Returning Response
      */
-    @DeleteMapping("/deleteAddressbookAddressbook/{id}")
+    @DeleteMapping("/deleteAddressbook/{id}")
     public ResponseEntity<ResponseDTO> deleteAddressbookInfo(@PathVariable int id) {
-        AddressbookData addressbookData = null;
-        addressbookData = addressbookService.deleteAddressbookData(id);
-        ResponseDTO responseDTO = new ResponseDTO("Deleted Addressbook Data Successfully.", addressbookData);
+        addressbookService.deleteAddressbookData(id);
+        ResponseDTO responseDTO = new ResponseDTO("Deleted Successfully, ", "Deleted Id : " + id);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 }
